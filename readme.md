@@ -2,7 +2,7 @@
 
 ## Tecnologias utilizadas
 
-- Next.js
+- Node.js
 - Tailwind CSS
 - Shadcn/UI
 - React Hook Form
