@@ -7,6 +7,7 @@
     "dev": "vite",
     "build": "tsc && prisma generate && prisma migrate dev --name init",
     "start": "node dist/server.js",
+    "start_front": "node dist/app.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "migrate": "npx prisma migrate dev --name init",
