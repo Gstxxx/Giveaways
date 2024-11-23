@@ -1,5 +1,5 @@
 import { History } from 'lucide-react';
-import { Winner } from '../types';
+import { Winner } from '../types.js';
 
 interface WinnerHistoryProps {
   winners: Winner[];

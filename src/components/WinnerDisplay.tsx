@@ -1,5 +1,5 @@
 import { Trophy } from 'lucide-react';
-import { Winner } from '../types';
+import { Winner } from '../types.js';
 
 interface WinnerDisplayProps {
   winners: Winner[];

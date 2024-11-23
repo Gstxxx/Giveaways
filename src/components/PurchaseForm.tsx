@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Buyer } from '../types';
 import { UserPlus, X } from 'lucide-react';
-import { useToast } from "../hooks/use-toast"
+import { useToast } from "../hooks/use-toast.js"
 
 interface PurchaseFormProps {
   onPurchase: (buyer: Omit<Buyer, 'id' | 'purchaseDate'>) => void;

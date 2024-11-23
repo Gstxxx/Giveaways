@@ -1,4 +1,4 @@
-import { Buyer } from '../types';
+import { Buyer } from '../types.js';
 
 interface NumberGridProps {
   totalNumbers: number;

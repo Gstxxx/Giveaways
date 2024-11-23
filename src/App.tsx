@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { NumberGrid } from './components/NumberGrid';
-import { PurchaseForm } from './components/PurchaseForm';
-import { WinnerDisplay } from './components/WinnerDisplay';
-import { WinnerHistory } from './components/WinnerHistory';
-import { Stats } from './components/Stats';
-import { Buyer, RaffleState } from './types';
+import { NumberGrid } from './components/NumberGrid.js';
+import { PurchaseForm } from './components/PurchaseForm.js';
+import { WinnerDisplay } from './components/WinnerDisplay.js';
+import { WinnerHistory } from './components/WinnerHistory.js';
+import { Stats } from './components/Stats.js';
+import { Buyer, RaffleState } from './types.js';
 import { LayoutGrid, Users } from 'lucide-react';
-import { useToast } from "./hooks/use-toast"
-import { Toaster } from "./components/ui/toaster"
+import { useToast } from "./hooks/use-toast.js"
+import { Toaster } from "./components/ui/toaster.js"
 
 const TOTAL_NUMBERS = 400;
 
