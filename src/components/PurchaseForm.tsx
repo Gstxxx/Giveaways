@@ -40,7 +40,7 @@ export function PurchaseForm({
           window.location.reload();
           toast({
             title: "Compra realizada",
-            description: `Comprador ${buyer.name} adicionado com sucesso.`,
+            description: `Comprador ${newBuyer.name} adicionado com sucesso.`,
           });
         } else {
           console.error('Failed to save buyer');
