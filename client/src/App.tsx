@@ -9,6 +9,10 @@ import { Buyer, RaffleState } from './types.js';
 import { LayoutGrid, Users } from 'lucide-react';
 import { useToast } from "./hooks/use-toast.js"
 import { Toaster } from "./components/ui/toaster.js"
+import { submit as buyersAction } from "@/lib/buyers.js";
+import { submit as winnersAction } from "@/lib/winners.js";
+import { submit as testAction } from "@/lib/test.js";
+import { submit as getWinnersAction } from "@/lib/get-winners.js"
 
 const TOTAL_NUMBERS = 400;
 
@@ -32,9 +36,7 @@ function App() {
   useEffect(() => {
     const fetchBuyers = async () => {
       try {
-        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/buyers', {
-          mode: 'no-cors'
-        });
+        const response = await buyersAction();
         if (response.ok) {
           const buyers: BuyerResponse[] = await response.json();
           const transformedBuyers = buyers.map((buyer: BuyerResponse) => ({
@@ -52,9 +54,7 @@ function App() {
 
     const fetchWinners = async () => {
       try {
-        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/get-winners', {
-          mode: 'no-cors'
-        });
+        const response = await getWinnersAction();
         if (response.ok) {
           const winners = await response.json();
           setState(prev => ({ ...prev, winners }));
@@ -68,6 +68,24 @@ function App() {
 
     fetchBuyers();
     fetchWinners();
+  }, []);
+
+  useEffect(() => {
+    const fetchTest = async () => {
+      try {
+        const response = await testAction();
+        if (response.ok) {
+          const data = await response.json();
+          console.log('Test data:', data);
+        } else {
+          console.error('Failed to fetch test data:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching test data:', error);
+      }
+    };
+
+    fetchTest();
   }, []);
 
   const availableNumbers = Array.from({ length: TOTAL_NUMBERS }, (_, i) => i + 1)
@@ -116,14 +134,7 @@ function App() {
     }));
 
     try {
-      const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/winners', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(podium),
-      });
-
+      const response = await winnersAction(podium);
       if (response.ok) {
         const savedWinners = await response.json();
         setState(prev => ({
@@ -207,7 +218,7 @@ function App() {
                   >
                     <span className="text-gray-700">{buyer.name}</span>
                     <div className="flex flex-wrap gap-1 justify-end">
-                      {buyer.numbers.map(number => (
+                      {[...new Set(buyer.numbers)].map(number => (
                         <span key={number} className="bg-blue-100 text-blue-700 px-2 py-1 rounded-md text-sm">
                           #{number}
                         </span>

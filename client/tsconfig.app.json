@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
     "target": "ES2020",
     "useDefineForClassFields": true,
     "lib": [
@@ -11,6 +10,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
     /* Bundler mode */
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
     "moduleDetection": "force",
@@ -25,6 +25,9 @@
     "paths": {
       "@/*": [
         "./src/*"
+      ],
+      "@server/*": [
+        "../server/src/*"
       ]
     }
   },

@@ -1,27 +1,19 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
     "target": "ESNext",
     "module": "ESNext",
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
     "strict": true,
-    "outDir": "./dist",
+    "skipLibCheck": true,
+    "types": [
+      "node"
+    ],
     "jsx": "react-jsx",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
-    "paths": {
-      "@/*": [
-        "./*"
-      ]
-    }
-  },
-  "include": [
-    "src",
-    "src/seed.ts",
-    "src/index.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+    "jsxImportSource": "hono/jsx",
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
+  }
 }

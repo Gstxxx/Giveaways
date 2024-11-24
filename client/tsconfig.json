@@ -1,27 +1,22 @@
 {
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "outDir": "./dist",
-    "jsx": "react-jsx",
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "./*"
+        "./src/*"
+      ],
+      "@server/*": [
+        "../server/src/*"
       ]
     }
-  },
-  "include": [
-    "src",
-    "../server/src/seed.ts",
-    "../server/src/index.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  }
 }

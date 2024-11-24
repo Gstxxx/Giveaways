@@ -2,10 +2,17 @@
 CREATE TABLE "Buyer" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "name" TEXT NOT NULL,
-    "numbers" INTEGER NOT NULL,
     "purchaseDate" DATETIME NOT NULL,
     "raffleStateId" TEXT,
     CONSTRAINT "Buyer_raffleStateId_fkey" FOREIGN KEY ("raffleStateId") REFERENCES "RaffleState" ("id") ON DELETE SET NULL ON UPDATE CASCADE
+);
+
+-- CreateTable
+CREATE TABLE "Purchase" (
+    "id" TEXT NOT NULL PRIMARY KEY,
+    "number" INTEGER NOT NULL,
+    "buyerId" TEXT NOT NULL,
+    CONSTRAINT "Purchase_buyerId_fkey" FOREIGN KEY ("buyerId") REFERENCES "Buyer" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 -- CreateTable

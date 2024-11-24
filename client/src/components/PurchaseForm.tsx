@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Buyer } from '../types';
 import { UserPlus, X } from 'lucide-react';
 import { useToast } from "../hooks/use-toast.js"
+import { submit as buyer } from "@/lib/buyer.js";
 
 interface PurchaseFormProps {
   onPurchase: (buyer: Omit<Buyer, 'id' | 'purchaseDate'>) => void;
@@ -22,20 +23,23 @@ export function PurchaseForm({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (name && selectedNumbers.length > 0) {
-      const newBuyer = { name, numbers: selectedNumbers };
-      try {
-        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/buyer', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newBuyer),
-          mode: 'no-cors'
-        });
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('numbers', selectedNumbers.join(','));
 
+      try {
+
+        const name = formData.get("name")?.toString();
+        const numbers = formData.get("numbers")?.toString().split(',').map(Number);
+
+        if (!name || !numbers || numbers.length === 0) {
+          return { error: "Invalid name or numbers." };
+        }
+
+        const response = await buyer({ name, numbers });
         if (response.ok) {
-          const savedBuyer = await response.json();
-          onPurchase(savedBuyer);
+          const newBuyer = { name, numbers: selectedNumbers };
+          onPurchase(newBuyer);
           setName('');
           onClearSelection();
           window.location.reload();
@@ -43,9 +47,9 @@ export function PurchaseForm({
             title: "Compra realizada",
             description: `Comprador ${newBuyer.name} adicionado com sucesso.`,
           });
-        } else {
-          console.error('Failed to save buyer');
+          return { success: true, message: "Purchase successful" };
         }
+        return { error: "An error occurred while processing the purchase.", err: response.status };
       } catch (error) {
         console.error('Error:', error);
       }
