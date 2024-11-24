@@ -4,15 +4,10 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && prisma generate && prisma migrate dev --name init",
-    "start": "node dist/server.js",
-    "start_front": "node dist/app.js",
-    "lint": "eslint .",
-    "preview": "vite preview",
-    "migrate": "npx prisma migrate dev --name init",
-    "studio": "npx prisma studio",
-    "generate": "npx prisma generate",
+    "dev": "tsx watch src/index.ts",
+    "database": "npx prisma generate && npx prisma migrate dev --name init",
+    "start": "node dist/index.js",
+    "format": "prettier --write .",
     "seed": "npx -y tsx src/seed.ts"
   },
   "dependencies": {

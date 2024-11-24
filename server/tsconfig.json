@@ -17,7 +17,9 @@
     }
   },
   "include": [
-    "src"
+    "src",
+    "src/seed.ts",
+    "src/index.ts"
   ],
   "exclude": [
     "node_modules"
