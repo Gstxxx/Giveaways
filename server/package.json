@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "database": "npx prisma generate && npx prisma migrate dev --name init",
-    "start": "node dist/index.js",
+    "build": "tsc && npx prisma generate && npx prisma migrate dev --name init",
+    "start": "node ./index.js",
     "format": "prettier --write .",
     "seed": "npx -y tsx src/seed.ts"
   },

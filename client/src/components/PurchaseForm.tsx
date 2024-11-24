@@ -24,7 +24,7 @@ export function PurchaseForm({
     if (name && selectedNumbers.length > 0) {
       const newBuyer = { name, numbers: selectedNumbers };
       try {
-        const response = await fetch('http://localhost:3000/buyers', {
+        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/buyers', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
