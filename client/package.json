@@ -6,7 +6,6 @@
   "scripts": {
     "dev": "vite",
     "build": "npx vite build",
-    "start": "node dist/server.js",
     "lint": "eslint .",
     "preview": "vite preview",
     "migrate": "npx prisma migrate dev --name init",
