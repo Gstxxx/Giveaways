@@ -20,7 +20,7 @@ const winnerSchema = z.object({
 });
 
 app.use('/*', cors());
-app.post('/buyers', zValidator("json", buyerSchema), async (c) => {
+app.post('/buyer', zValidator("json", buyerSchema), async (c) => {
     try {
         const JSONdata = c.req.valid("json");
 
