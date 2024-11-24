@@ -88,6 +88,8 @@ app.post('/buyer', zValidator("json", buyerSchema), async (c) => {
         console.error('Error fetching winners:', error);
         return c.json({ error: 'Failed to fetch winners' }, 500);
     }
+}).get('/test', async (c) => {
+    return c.json({ message: 'worked' }, 200);
 });
 
 export type AppType = typeof app;
