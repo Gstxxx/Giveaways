@@ -30,6 +30,7 @@ export function PurchaseForm({
             'Content-Type': 'application/json',
           },
           body: JSON.stringify(newBuyer),
+          mode: 'no-cors'
         });
 
         if (response.ok) {

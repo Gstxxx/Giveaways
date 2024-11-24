@@ -32,7 +32,9 @@ function App() {
   useEffect(() => {
     const fetchBuyers = async () => {
       try {
-        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/buyers');
+        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/buyers', {
+          mode: 'no-cors'
+        });
         if (response.ok) {
           const buyers: BuyerResponse[] = await response.json();
           const transformedBuyers = buyers.map((buyer: BuyerResponse) => ({
@@ -50,7 +52,9 @@ function App() {
 
     const fetchWinners = async () => {
       try {
-        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/get-winners');
+        const response = await fetch('http://wkgcc00g4kkcc84c8okw4woc.89.117.32.118.sslip.io/get-winners', {
+          mode: 'no-cors'
+        });
         if (response.ok) {
           const winners = await response.json();
           setState(prev => ({ ...prev, winners }));
