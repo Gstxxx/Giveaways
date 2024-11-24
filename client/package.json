@@ -12,7 +12,8 @@
     "migrate": "npx prisma migrate dev --name init",
     "studio": "npx prisma studio",
     "generate": "npx prisma generate",
-    "seed": "npx -y tsx src/seed.ts"
+    "seed": "npx -y tsx src/seed.ts",
+    "start": "npx http-server -o ./"
   },
   "dependencies": {
     "@faker-js/faker": "^9.2.0",
