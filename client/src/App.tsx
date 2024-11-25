@@ -11,7 +11,6 @@ import { useToast } from "./hooks/use-toast.js"
 import { Toaster } from "./components/ui/toaster.js"
 import { submit as buyersAction } from "@/lib/buyers.js";
 import { submit as winnersAction } from "@/lib/winners.js";
-import { submit as testAction } from "@/lib/test.js";
 import { submit as getWinnersAction } from "@/lib/get-winners.js"
 
 const TOTAL_NUMBERS = 400;
@@ -70,23 +69,6 @@ function App() {
     fetchWinners();
   }, []);
 
-  useEffect(() => {
-    const fetchTest = async () => {
-      try {
-        const response = await testAction();
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Test data:', data);
-        } else {
-          console.error('Failed to fetch test data:', response.statusText);
-        }
-      } catch (error) {
-        console.error('Error fetching test data:', error);
-      }
-    };
-
-    fetchTest();
-  }, []);
 
   const availableNumbers = Array.from({ length: TOTAL_NUMBERS }, (_, i) => i + 1)
     .filter(num => !state.buyers.some(buyer => buyer.numbers.includes(num)));
